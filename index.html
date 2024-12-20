@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boba 3D Experience</title>
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="preloader">
+    <div class="spinner"></div>
+    <p>Loading the 3D Boba Experience...</p>
+  </div>
+
+  <a-scene>
+    
+    <a-sky color="#ffe6e6"></a-sky>
+
+    
+    <a-entity position="-3 1.5 -5" animation__hover="property: rotation; to: 0 360 0; loop: true; dur: 3000">
+      <a-sphere radius="1.2" color="#FFB6C1" material="shader: flat;" shadow></a-sphere>
+      <a-text value="Strawberry Boba" position="0 -1.8 0" align="center" color="#000" width="3"></a-text>
+    </a-entity>
+
+    
+    <a-entity position="0 1.5 -5" animation__hover="property: rotation; to: 360 0 0; loop: true; dur: 3000">
+      <a-sphere radius="1.2" color="#FFFACD" material="shader: flat;" shadow></a-sphere>
+      <a-text value="Mango Boba" position="0 -1.8 0" align="center" color="#000" width="3"></a-text>
+    </a-entity>
+
+    
+    <a-entity position="3 1.5 -5" animation__hover="property: rotation; to: 0 -360 0; loop: true; dur: 3000">
+      <a-sphere radius="1.2" color="#C0C0FF" material="shader: flat;" shadow></a-sphere>
+      <a-text value="Blueberry Boba" position="0 -1.8 0" align="center" color="#000" width="3"></a-text>
+    </a-entity>
+
+    
+    <a-plane position="0 1 -3" rotation="-30 0 0" color="#ffffff" width="8" height="4" shadow>
+      <a-text value="What is Boba?\n\nBoba tea, also known as bubble tea, is a Taiwanese tea-based drink.\n\nIt's delicious and comes with chewy tapioca pearls!" align="center" color="#000" width="6"></a-text>
+    </a-plane>
+
+    
+    <a-camera position="0 1.6 0">
+      <a-animation attribute="position" to="0 1.6 5" dur="2000" repeat="indefinite"></a-animation>
+    </a-camera>
+  </a-scene>
+
+  <script>
+    // Preloader
+    window.addEventListener('load', () => {
+      const preloader = document.getElementById('preloader');
+      preloader.classList.add('hidden');
+    });
+  </script>
+</body>
+</html>
+
+<style>
+  body {
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+  }
+
+  #preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffe6e6;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+  }
+
+  #preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #ffb6c1;
+    border-top: 5px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+</style>
